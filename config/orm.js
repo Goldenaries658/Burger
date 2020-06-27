@@ -8,12 +8,11 @@ const connectionPromise = util.promisify(connection.query).bind(connection);
 module.exports = {
   selectAll: async (table) => {
     const queryString = `SELECT * FROM ??;`;
+    const resultArr = [];
     try {
       const result = await connectionPromise(queryString, table);
-      for (i in result) {
-        resultArr.push(JSON.parse(JSON.stringify(result[i])));
-      }
-      return resultArr;
+      console.log('success');
+      return result;
     } catch (err) {
       console.error(`ERROR - orm.js - selectAll(): ${err}`.red.bold);
     }
@@ -36,7 +35,9 @@ module.exports = {
     WHERE id = ?;`;
     const valueArr = [table, column1, value, id];
     try {
-      return connectionPromise(queryString, valueArr);
+      const result = await connectionPromise(queryString, valueArr);
+      console.log('Saved!'.green.bold);
+      return result;
     } catch (err) {
       console.error(`ERROR - orm.js - updateOne(): ${err}`.red.bold);
     }
