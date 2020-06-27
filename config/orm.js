@@ -28,9 +28,7 @@ const orm = {
       console.log('Saved!'.green.bold);
       return;
     } catch (err) {
-      console.error(
-          `ERROR - tableOperations.js - insertOne: ${err}`.red.bold
-      );
+      console.error(`ERROR - tableOperations.js - insertOne: ${err}`.red.bold);
     }
   },
   updateOne: async (isDevoured, id) => {
@@ -40,7 +38,9 @@ const orm = {
     try {
       return connectionPromise(queryString, [isDevoured, id]);
     } catch (err) {
-      console.error(`ERROR - tableOperations.js - updateOne(): ${err}`.red.bold);
+      console.error(
+        `ERROR - tableOperations.js - updateOne(): ${err}`.red.bold
+      );
     }
   },
 };
