@@ -20,6 +20,19 @@ const orm = {
       );
     }
   },
+  insertOne: async (burger_name) => {
+      const queryString = `INSERT INTO burger
+       VALUES (?);`;
+    try {
+      await connectionPromise(queryString, burger_name);
+      console.log('Saved!'.green.bold);
+      return;
+    } catch (err) {
+      console.error(
+        `ERROR - tableOperations.js - insertOne: ${err}`.red.bold
+      );
+    }
+  },
 };
 
 // insertOne()
