@@ -44,6 +44,3 @@ const orm = {
     }
   },
 };
-
-// insertOne()
-// updateOne()
