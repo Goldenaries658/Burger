@@ -5,7 +5,7 @@ const util = require('util');
 // Promisify connection
 const connectionPromise = util.promisify(connection.query).bind(connection);
 
-const orm = {
+module.exports = {
   selectAll: async () => {
     const queryString = `SELECT * FROM burgers;`;
     try {
