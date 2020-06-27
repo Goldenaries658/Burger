@@ -6,41 +6,39 @@ const util = require('util');
 const connectionPromise = util.promisify(connection.query).bind(connection);
 
 module.exports = {
-  selectAll: async () => {
-    const queryString = `SELECT * FROM burgers;`;
+  selectAll: async (table) => {
+    const queryString = `SELECT * FROM ??;`;
     try {
-      const result = await connectionPromise(queryString);
+      const result = await connectionPromise(queryString, table);
       for (i in result) {
         resultArr.push(JSON.parse(JSON.stringify(result[i])));
       }
       return resultArr;
     } catch (err) {
-      console.error(
-        `ERROR - tableOperations.js - selectAll(): ${err}`.red.bold
-      );
+      console.error(`ERROR - orm.js - selectAll(): ${err}`.red.bold);
     }
   },
-  insertOne: async (burger_name) => {
-    const queryString = `INSERT INTO burger
+  insertOne: async (table, value) => {
+    const queryString = `INSERT INTO ??
        VALUES (?);`;
+    const valueArr = [table, value];
     try {
-      await connectionPromise(queryString, burger_name);
+      await connectionPromise(queryString, valueArr);
       console.log('Saved!'.green.bold);
       return;
     } catch (err) {
-      console.error(`ERROR - tableOperations.js - insertOne: ${err}`.red.bold);
+      console.error(`ERROR - orm.js - insertOne: ${err}`.red.bold);
     }
   },
-  updateOne: async (isDevoured, id) => {
-    const queryString = `UPDATE burgers 
-    SET devoured = ?
+  updateOne: async (table, column1, value, id) => {
+    const queryString = `UPDATE ?? 
+    SET ?? = ?
     WHERE id = ?;`;
+    const valueArr = [table, column1, value, id];
     try {
-      return connectionPromise(queryString, [isDevoured, id]);
+      return connectionPromise(queryString, valueArr);
     } catch (err) {
-      console.error(
-        `ERROR - tableOperations.js - updateOne(): ${err}`.red.bold
-      );
+      console.error(`ERROR - orm.js - updateOne(): ${err}`.red.bold);
     }
   },
 };
