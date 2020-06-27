@@ -21,7 +21,7 @@ const orm = {
     }
   },
   insertOne: async (burger_name) => {
-      const queryString = `INSERT INTO burger
+    const queryString = `INSERT INTO burger
        VALUES (?);`;
     try {
       await connectionPromise(queryString, burger_name);
@@ -29,8 +29,18 @@ const orm = {
       return;
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - insertOne: ${err}`.red.bold
+          `ERROR - tableOperations.js - insertOne: ${err}`.red.bold
       );
+    }
+  },
+  updateOne: async (isDevoured, id) => {
+    const queryString = `UPDATE burgers 
+    SET devoured = ?
+    WHERE id = ?;`;
+    try {
+      return connectionPromise(queryString, [isDevoured, id]);
+    } catch (err) {
+      console.error(`ERROR - tableOperations.js - updateOne(): ${err}`.red.bold);
     }
   },
 };
