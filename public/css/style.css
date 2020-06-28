@@ -66,6 +66,7 @@ body {
   color: #f7f7f9;
   height: 80px;
   line-height: 80px;
+  font-size: 1.3rem;
 }
 
 .nav-desk {
@@ -107,15 +108,26 @@ body {
   flex-flow: column;
 }
 
-#headline {
-  display: inline;
-  font-size: 1.5rem;
+#title {
+  font-size: 3rem;
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.menu-item {
+  font-size: 1.1rem;
+}
+
+#add-burger-form > label {
+    font-size: 1.5rem;
 }
 
 #submit-button {
   margin-top: 15px;
 }
-
 
 /* Media queries */
 @media screen and (min-width: 768px) {

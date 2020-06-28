@@ -1,29 +1,33 @@
-<h2>Burger List</h2>
+<h2>Burger List.</h2>
 
 <div class="list-group">
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=false}}
+  {{#each burgers}} 
+    {{#unless devoured}} 
+      {{> burgers/burger-block devoured=false}} 
     {{/unless}}
-  {{/each}}
+ {{/each}}
 </div>
 
-<h3>Unavailable</h3>
+<br />
+
+<h3>Currently Unavailable:</h3>
 
 <div class="list-group">
   {{#each burgers}}
     {{#if devoured}}
       {{> burgers/burger-block devoured=true}}
-    {{/if}}
+    {{/if}} 
   {{/each}}
 </div>
 
-<h3>Add burger</h3>
-<form>
-  <div>
-    <label for="name">Burger Name:</label>
-    <input type="text" id="name" name="name">
-  </div>
+<br />
 
-  <button type="submit">Add Burger</button>
-</form>
+<div id="add-burger-form" class="form-group">
+  <label class="col-form-label" for="burger-name">Add Burger.</label>
+  <input type="text" class="form-control" placeholder="Burger name"
+    id="burger-name" />
+
+  <button class="btn btn-primary" id="add-burger" type="submit">
+    Add Burger
+  </button>
+</div>
