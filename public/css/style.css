@@ -1,0 +1,143 @@
+body {
+  background: #212121;
+  background-image: url(./images/topography.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Mobile navbar section */
+#mobile-navbar {
+  display: block;
+}
+
+.header-mob {
+  padding: 15px;
+  background-color: #af2929;
+  text-align: center;
+  line-height: 60px;
+  height: 60px;
+}
+
+.header-mob > h1 {
+  color: #f7f7f9;
+}
+
+.nav-mob {
+  background: #f7f7f9;
+}
+
+.nav-mob > ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.nav-mob > ul > li {
+  display: inline;
+  padding: 0 5px;
+  margin: 0px;
+}
+
+.current {
+  background: #af292960;
+}
+
+/* Desktop navbar section */
+#desktop-navbar {
+  display: none;
+  background-color: #343a40;
+}
+
+.header-desk {
+  background-color: #af2929;
+  width: 200px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  margin-left: 9.5%;
+  padding: 0px;
+}
+
+.header-desk > h1 {
+  color: #f7f7f9;
+  height: 80px;
+  line-height: 80px;
+  font-size: 1.3rem;
+}
+
+.nav-desk {
+  margin-right: 9.5%;
+}
+
+.nav-desk > ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.nav-desk > ul > li {
+  display: inline;
+  padding: 0 5px;
+  margin: 0px;
+}
+
+.nav-desk > ul > li > a {
+  padding: 0 20px;
+  color: #f7f7f9;
+}
+
+.nav-desk > ul > li > .current {
+  padding: 0 20px;
+}
+
+/* Global Styling */
+.container-fluid {
+  padding-top: 10%;
+}
+
+#main-container {
+  display: flex;
+  flex-flow: column;
+}
+
+#title {
+  font-size: 3rem;
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.menu-item {
+  font-size: 1.1rem;
+}
+
+#add-burger-form > label {
+    font-size: 1.5rem;
+}
+
+#submit-button {
+  margin-top: 15px;
+}
+
+/* Media queries */
+@media screen and (min-width: 768px) {
+  /* Changing Nav to desktop */
+  #mobile-navbar {
+    display: none;
+  }
+
+  #desktop-navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+}
