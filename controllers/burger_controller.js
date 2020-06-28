@@ -5,7 +5,7 @@ const burger = require('../models/burger');
 const router = express.Router();
 
 // API routes
-router.get('/api/burger', async (req, res) => {
+router.get('/api/burgers', async (req, res) => {
   try {
     const data = await burger.selectAll();
     res.status(200).json(data);
@@ -16,7 +16,7 @@ router.get('/api/burger', async (req, res) => {
   }
 });
 
-router.post('/api/burger', async (req, res) => {
+router.post('/api/burgers', async (req, res) => {
   const burgerName = req.body.name;
   try {
     await burger.insertOne(burgerName);
@@ -27,4 +27,5 @@ router.post('/api/burger', async (req, res) => {
     );
   }
 });
+
 module.exports = router;
