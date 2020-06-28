@@ -39,7 +39,6 @@ router.put('/api/burgers/:id', async (req, res, next) => {
 
   try {
     const result = await burger.updateOne(col, value, burgerId);
-    console.log(result);
     if (result.changedRows === 0) {
       throw new Error('0 Rows Changed: An unknown error occurred.');
     }
