@@ -15,14 +15,10 @@ module.exports = {
       console.error(`ERROR - orm.js - insertOne(): ${err}`.red.bold);
     }
   },
-  updateOne: async (newBurgerName, burgerID) => {
+  updateOne: async (col, value, burgerID) => {
+    const queryArr = ['burgers', col, value, burgerID];
     try {
-      return await orm.updateOne(
-        'burgers',
-        'burger_name',
-        newBurgerName,
-        burgerID
-      );
+      return await orm.updateOne(queryArr);
     } catch (err) {
       console.error(`ERROR - orm.js - updateOne(): ${err}`.red.bold);
     }
