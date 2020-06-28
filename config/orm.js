@@ -29,13 +29,12 @@ module.exports = {
       console.error(`ERROR - orm.js - insertOne: ${err}`.red.bold);
     }
   },
-  updateOne: async (table, column1, value, id) => {
+  updateOne: async (queryArr) => {
     const queryString = `UPDATE ?? 
     SET ?? = ?
     WHERE id = ?;`;
-    const valueArr = [table, column1, value, id];
     try {
-      const result = await connectionPromise(queryString, valueArr);
+      const result = await connectionPromise(queryString, queryArr);
       console.log('Saved!'.green.bold);
       return result;
     } catch (err) {

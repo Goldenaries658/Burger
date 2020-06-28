@@ -5,15 +5,16 @@ const burger = require('../models/burger');
 const router = express.Router();
 
 // API routes
-router.get('/api/burgers', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const data = await burger.selectAll();
-    res.status(200).json(data);
+
+    res.status(200).render('index', { burgers: data });
   } catch (err) {
     console.error(
       `ERROR - burger_controller.js - .get('/api/burgers'): ${err}`.red.bold
     );
-    next();
+    next(err);
   }
 });
 
@@ -32,11 +33,12 @@ router.post('/api/burgers', async (req, res, next) => {
 
 router.put('/api/burgers/:id', async (req, res, next) => {
   const burgerId = req.params.id;
-  const newBurgerName = req.body.name;
-  console.log(newBurgerName, burgerId);
+  const col = !!req.body.name ? 'burger_name' : 'devoured';
+  const value = !!req.body.name ? req.body.name : req.body.devoured;
+  console.log(value, burgerId);
 
   try {
-    const result = await burger.updateOne(newBurgerName, burgerId);
+    const result = await burger.updateOne(col, value, burgerId);
     console.log(result);
     if (result.changedRows === 0) {
       throw new Error('0 Rows Changed: An unknown error occurred.');
