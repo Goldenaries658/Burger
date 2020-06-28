@@ -1,9 +1,9 @@
-<li>
+<a href="#" class="list-group-item list-group-item-action">
   {{ burger_name }}
-  
-  <button class="restock" data-id="{{ id }}" data-devoured="{{ devoured }}">
+
+  <button class="btn btn-primary restock" data-id="{{ id }}" data-devoured="{{ devoured }}">
     {{#if devoured}}Restock.{{else}}Eat.{{/if}}
   </button>
 
-  <button class="delete-burger" data-id="{{ id }}">Delete</button>
-</li>
+  <button class="btn btn-primary delete-burger" data-id="{{ id }}">Delete</button>
+</a>
