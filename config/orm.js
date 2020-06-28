@@ -17,10 +17,10 @@ module.exports = {
       console.error(`ERROR - orm.js - selectAll(): ${err}`.red.bold);
     }
   },
-  insertOne: async (table, value) => {
+  insertOne: async (table, value1, value2) => {
     const queryString = `INSERT INTO ??
-       VALUES (?);`;
-    const valueArr = [table, value];
+       VALUES (id, ?, ?);`;
+    const valueArr = [table, value1, value2];
     try {
       await connectionPromise(queryString, valueArr);
       console.log('Saved!'.green.bold);
