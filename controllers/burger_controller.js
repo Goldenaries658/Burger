@@ -11,9 +11,20 @@ router.get('/api/burger', async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     console.error(
-      `ERROR - burger_controller.js - .get('/api'): ${err}`.red.bold
+      `ERROR - burger_controller.js - .get('/api/burgers'): ${err}`.red.bold
     );
   }
 });
 
+router.post('/api/burger', async (req, res) => {
+  const burgerName = req.body.name;
+  try {
+    await burger.insertOne(burgerName);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(
+      `ERROR - burger_controller.js - .post('/api/burgers'): ${err}`.red.bold
+    );
+  }
+});
 module.exports = router;
