@@ -10,8 +10,9 @@ module.exports = {
     const queryString = `SELECT * FROM ??;`;
     const resultArr = [];
     try {
+      console.log(`Running QUERY: ${queryString}`.red.bold)
       const result = await connectionPromise(queryString, table);
-      console.log('success');
+      console.log('success'.green.bold);
       return result;
     } catch (err) {
       console.error(`ERROR - orm.js - selectAll(): ${err}`.red.bold);
@@ -22,6 +23,8 @@ module.exports = {
        VALUES (id, ?, ?);`;
     const valueArr = [table, value1, value2];
     try {
+      console.clear();
+      console.log(`Running QUERY: ${queryString}`.red.bold)
       await connectionPromise(queryString, valueArr);
       console.log('Saved!'.green.bold);
       return;
@@ -34,6 +37,8 @@ module.exports = {
     SET ?? = ?
     WHERE id = ?;`;
     try {
+      console.clear();
+      console.log(`Running QUERY: ${queryString}`.red.bold)
       const result = await connectionPromise(queryString, queryArr);
       console.log('Saved!'.green.bold);
       return result;
