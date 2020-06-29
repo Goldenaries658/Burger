@@ -15,8 +15,8 @@ module.exports = {
       console.error(`ERROR - orm.js - insertOne(): ${err}`.red.bold);
     }
   },
-  updateOne: async (col, value, burgerID) => {
-    const queryArr = ['burgers', col, value, burgerID];
+  updateOne: async (devoured, burgerID) => {
+    const queryArr = ['burgers', devoured, burgerID];
     try {
       return await orm.updateOne(queryArr);
     } catch (err) {
