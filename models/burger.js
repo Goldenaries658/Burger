@@ -10,7 +10,7 @@ module.exports = {
   },
   insertOne: async (burgerName) => {
     try {
-      return await orm.insertOne('burgers', burgerName, false);
+      return await orm.insertOne('burgers', burgerName);
     } catch (err) {
       console.error(`ERROR - orm.js - insertOne(): ${err}`.red.bold);
     }

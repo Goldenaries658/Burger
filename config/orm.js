@@ -18,10 +18,10 @@ module.exports = {
       console.error(`ERROR - orm.js - selectAll(): ${err}`.red.bold);
     }
   },
-  insertOne: async (table, value1, value2) => {
+  insertOne: async (table, value) => {
     const queryString = `INSERT INTO ??
-       VALUES (id, ?, ?);`;
-    const valueArr = [table, value1, value2];
+       VALUES (id, ?, 0, createdAt);`;
+    const valueArr = [table, value];
     try {
       console.clear();
       console.log(`Running QUERY: ${queryString}`.red.bold)
