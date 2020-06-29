@@ -22,6 +22,7 @@ router.post('/api/burgers', async (req, res, next) => {
   const burgerName = req.body.name;
   try {
     await burger.insertOne(burgerName);
+    console.log(`Added ${burgerName} to db`);
     res.sendStatus(200);
   } catch (err) {
     console.error(
@@ -33,15 +34,18 @@ router.post('/api/burgers', async (req, res, next) => {
 
 router.put('/api/burgers/:id', async (req, res, next) => {
   const burgerId = req.params.id;
-  const col = !!req.body.name ? 'burger_name' : 'devoured';
-  const value = !!req.body.name ? req.body.name : req.body.devoured;
-  console.log(value, burgerId);
+  const devoured = req.body.devoured;
 
   try {
-    const result = await burger.updateOne(col, value, burgerId);
+    const result = await burger.updateOne(devoured, burgerId);
     if (result.changedRows === 0) {
       throw new Error('0 Rows Changed: An unknown error occurred.');
     }
+    console.log(
+      `updated burger no ${burgerId} to ${
+        devoured ? 'available' : 'unavailable'
+      }`
+    );
     res.sendStatus(200);
   } catch (err) {
     console.error(

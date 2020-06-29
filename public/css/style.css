@@ -1,3 +1,7 @@
+html {
+  font-size: 88%;
+}
+
 body {
   background: #212121;
   background-image: url(./images/topography.svg);
@@ -16,11 +20,12 @@ body {
   padding: 15px;
   background-color: #af2929;
   text-align: center;
-  line-height: 60px;
-  height: 60px;
+  line-height: 75px;
+  height: 75px;
 }
 
 .header-mob > h1 {
+  font-size: 3rem;
   color: #f7f7f9;
 }
 
@@ -40,10 +45,6 @@ body {
   display: inline;
   padding: 0 5px;
   margin: 0px;
-}
-
-.current {
-  background: #af292960;
 }
 
 /* Desktop navbar section */
@@ -109,7 +110,7 @@ body {
 }
 
 #title {
-  font-size: 3rem;
+  font-size: 2.7rem;
 }
 
 .badge {
@@ -122,15 +123,18 @@ body {
 }
 
 #add-burger-form > label {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
-#submit-button {
+#add-burger {
   margin-top: 15px;
 }
 
 /* Media queries */
 @media screen and (min-width: 768px) {
+  html {
+    font-size: 100%;
+  }
   /* Changing Nav to desktop */
   #mobile-navbar {
     display: none;

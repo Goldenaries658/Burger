@@ -8,10 +8,6 @@ const defaultConnection = {
   database: 'burgers_db',
 };
 
-<<<<<<< Updated upstream
-console.log(process.env.JAWSDB_URL)
-=======
->>>>>>> Stashed changes
 module.exports = mysql.createConnection(
   process.env.JAWSDB_URL ? process.env.JAWSDB_URL : defaultConnection
 );

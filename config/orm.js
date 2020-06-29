@@ -10,7 +10,7 @@ module.exports = {
     const queryString = `SELECT * FROM ??;`;
     const resultArr = [];
     try {
-      console.log(`Running QUERY: ${queryString}`.red.bold)
+      console.log(`Running QUERY: ${queryString}`.red.bold);
       const result = await connectionPromise(queryString, table);
       console.log('success'.green.bold);
       return result;
@@ -24,7 +24,7 @@ module.exports = {
     const valueArr = [table, value];
     try {
       console.clear();
-      console.log(`Running QUERY: ${queryString}`.red.bold)
+      console.log(`Running QUERY: ${queryString}`.red.bold);
       await connectionPromise(queryString, valueArr);
       console.log('Saved!'.green.bold);
       return;
@@ -34,11 +34,11 @@ module.exports = {
   },
   updateOne: async (queryArr) => {
     const queryString = `UPDATE ?? 
-    SET ?? = ?
+    SET devoured = ?
     WHERE id = ?;`;
     try {
       console.clear();
-      console.log(`Running QUERY: ${queryString}`.red.bold)
+      console.log(`Running QUERY: ${queryString}`.red.bold);
       const result = await connectionPromise(queryString, queryArr);
       console.log('Saved!'.green.bold);
       return result;
