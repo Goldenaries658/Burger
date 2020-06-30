@@ -39,7 +39,7 @@ Enter a burger.`
       type: 'POST',
       data: { name: burgerName },
     }).then(() => {
-      // location.reload();
+      location.reload();
     });
   }
 };

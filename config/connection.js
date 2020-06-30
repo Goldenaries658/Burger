@@ -2,9 +2,7 @@ const mysql = require('mysql');
 
 // Setting environment variables
 const dotenv = require('dotenv');
-const result = dotenv.config();
-
-if (result.error) throw result.error;
+dotenv.config();
 
 module.exports = mysql.createConnection(
   process.env.JAWSDB_URL
