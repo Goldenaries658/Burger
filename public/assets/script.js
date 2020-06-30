@@ -18,20 +18,28 @@ $(() => {
   // Adding burgers
   $('#add-burger').on('click', (e) => {
     e.preventDefault;
-    const burgerName = $('#burger-name').val();
-    if (burgerName === '') {
-      alert(
-`Such wisdom oh nameless one.
-      
-Enter a burger.`
-);
-    } else {
-      $.ajax(`api/burgers`, {
-        type: 'POST',
-        data: { name: burgerName },
-      }).then(() => {
-        location.reload();
-      });
-    }
+    addBurger();
+  });
+
+  $('#burger-name').on('keypress', (e) => {
+    if (e.which == 13) addBurger();
   });
 });
+
+const addBurger = () => {
+  const burgerName = $('#burger-name').val();
+  if (burgerName === '') {
+    alert(
+      `Such wisdom oh nameless one.
+      
+Enter a burger.`
+    );
+  } else {
+    $.ajax(`api/burgers`, {
+      type: 'POST',
+      data: { name: burgerName },
+    }).then(() => {
+      // location.reload();
+    });
+  }
+};
