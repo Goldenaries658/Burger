@@ -113,13 +113,15 @@ body {
   font-size: 2.7rem;
 }
 
-.badge {
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-}
-
 .menu-item {
   font-size: 1.1rem;
+}
+
+.eat-burger,
+.restock-burger {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
 }
 
 #add-burger-form > label {

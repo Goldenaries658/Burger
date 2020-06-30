@@ -8,7 +8,6 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   try {
     const data = await burger.selectAll();
-
     res.status(200).render('index', { burgers: data });
   } catch (err) {
     console.error(
@@ -22,7 +21,6 @@ router.post('/api/burgers', async (req, res, next) => {
   const burgerName = req.body.name;
   try {
     await burger.insertOne(burgerName);
-    console.log(`Added ${burgerName} to db`);
     res.sendStatus(200);
   } catch (err) {
     console.error(
@@ -41,11 +39,6 @@ router.put('/api/burgers/:id', async (req, res, next) => {
     if (result.changedRows === 0) {
       throw new Error('0 Rows Changed: An unknown error occurred.');
     }
-    console.log(
-      `updated burger no ${burgerId} to ${
-        devoured ? 'available' : 'unavailable'
-      }`
-    );
     res.sendStatus(200);
   } catch (err) {
     console.error(
