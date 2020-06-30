@@ -1,20 +1,22 @@
 $(() => {
   // Eating and restocking burgers
-  $('.eat-burger, .restock-burger').on('click', (e) => {
+  $('.eat-burger, .restock-burger').on('click', async (e) => {
     e.preventDefault();
     // Creating an object that flips the devoured boolean in sql
     const isDevoured = $(e.target).attr('data-devoured') == 'true' ? 0 : 1;
     const devouredObj = { devoured: isDevoured };
     const id = $(e.target).attr('data-id');
 
-    $.ajax(`api/burgers/${id}`, {
-      type: 'PUT',
-      data: devouredObj,
-    }).then(() => {
+    try {
+      await $.ajax(`api/burgers/${id}`, {
+        type: 'PUT',
+        data: devouredObj,
+      });
       location.reload();
-    });
+    } catch (err) {
+      console.error(`ERROR - script.js - $.ajax 'PUT': ${err}`);
+    }
   });
-
   // Adding burgers
   $('#add-burger').on('click', (e) => {
     e.preventDefault;
@@ -26,7 +28,7 @@ $(() => {
   });
 });
 
-const addBurger = () => {
+const addBurger = async () => {
   const burgerName = $('#burger-name').val();
   if (burgerName === '') {
     alert(
@@ -35,11 +37,14 @@ const addBurger = () => {
 Enter a burger.`
     );
   } else {
-    $.ajax(`api/burgers`, {
-      type: 'POST',
-      data: { name: burgerName },
-    }).then(() => {
+    try {
+      $.ajax(`api/burgers`, {
+        type: 'POST',
+        data: { name: burgerName },
+      });
       location.reload();
-    });
+    } catch (err) {
+      console.error(`ERROR - script.js - $.ajax 'POST': ${err}`);
+    }
   }
 };
