@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const defaultConnection = {
   host: 'localhost',
   port: 3306,
-  user: 'root',
+  user: 'burgerboy',
   password: '',
   database: 'burgers_db',
 };
