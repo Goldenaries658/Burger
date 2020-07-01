@@ -1,7 +1,7 @@
-const mysql = require('mysql');
+const mysql = require("mysql");
 
 // Setting environment variables
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 const defaultConnection = {
@@ -9,7 +9,7 @@ const defaultConnection = {
   port: 3306,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: 'burgers_db',
+  database: "burgers_db",
 };
 
 module.exports = mysql.createConnection(
@@ -20,6 +20,6 @@ module.exports = mysql.createConnection(
         port: 3306,
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
-        database: 'burgers_db',
+        database: "burgers_db",
       }
 );
